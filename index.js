@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { exec } = require('child_process');
+var shell = require('shelljs');
 
 const now = new Date();
 
@@ -37,7 +37,7 @@ try {
 
 
     let cmd = 'git branch --format=\'%(refname:short)\'';
-    let out = exec.execSync(cmd);
+    let out = shell.exec(cmd);
 
     // let out = child_process.execSync(cmd, (err, stdout, stderr) => {
     //     if (err) {
@@ -48,7 +48,7 @@ try {
     //     return stdout.trim();
     // });
 
-    console.log(`OUT: '${out}'`)
+    console.log(`OUT: '${JSON.stringify(out)}'`)
 
 } catch (error) {
     core.setFailed(error.message);
