@@ -9795,15 +9795,24 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
-try {
+const now = new Date();
 
+// Current date-based version prefix "vYYYY.MM."
+const prefix = `v${now.getFullYear()}.${now.getMonth() + 1}.`;
+
+
+try {
+    const defaultBranch = github.context.payload.repository.default_branch;
+    const currentBranch = github.context.ref;
+
+    let prefix = `v${now.getFullYear()}.${now.getMonth() + 1}`
 
     // `who-to-greet` input defined in action metadata file
     const nameToGreet = core.getInput('who-to-greet');
 
     // console.log(`Hello ${nameToGreet}!`);
 
-    const time = (new Date()).toTimeString();
+    const time = now.toTimeString();
 
     core.setOutput("time", time);
 
@@ -9812,8 +9821,8 @@ try {
     console.log(`The event payload: ${payload}`);
 
 
-    let defaultBranch = github.context.payload.repository.default_branch;
     console.log("DEFAULT BRANCH: " + defaultBranch);
+    console.log("CURRENT BRANCH: " + currentBranch);
 
 
 } catch (error) {
