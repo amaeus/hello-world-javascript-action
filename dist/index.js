@@ -9802,7 +9802,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
-const { exec } = __nccwpck_require__(2081);
+const {exec} = __nccwpck_require__(2081);
 
 const now = new Date();
 
@@ -9848,7 +9848,7 @@ try {
         return stdout.trim();
     });
 
-    console.log(`OUT: '${out}'`)
+    console.log(`OUT: '${JSON.stringify(out)}'`)
 
 } catch (error) {
     core.setFailed(error.message);

@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const { exec } = require('child_process');
+const {exec} = require('child_process');
 
 const now = new Date();
 
@@ -46,7 +46,7 @@ try {
         return stdout.trim();
     });
 
-    console.log(`OUT: '${out}'`)
+    console.log(`OUT: '${JSON.stringify(out)}'`)
 
 } catch (error) {
     core.setFailed(error.message);
