@@ -9796,10 +9796,18 @@ const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
 try {
+
+    let defaultBranch = github.event.repository.default_branch;
+
+    console.log("DEFAULT BRANCH: " + defaultBranch);
+
+
+
+
     // `who-to-greet` input defined in action metadata file
     const nameToGreet = core.getInput('who-to-greet');
 
-    console.log(`Hello ${nameToGreet}!`);
+    // console.log(`Hello ${nameToGreet}!`);
 
     const time = (new Date()).toTimeString();
 
