@@ -9797,12 +9797,6 @@ const github = __nccwpck_require__(5438);
 
 try {
 
-    let defaultBranch = github.event.repository.default_branch;
-
-    console.log("DEFAULT BRANCH: " + defaultBranch);
-
-
-
 
     // `who-to-greet` input defined in action metadata file
     const nameToGreet = core.getInput('who-to-greet');
@@ -9816,6 +9810,11 @@ try {
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
+
+
+    let defaultBranch = github.context.payload.repository.default_branch;
+    console.log("DEFAULT BRANCH: " + defaultBranch);
+
 
 } catch (error) {
     core.setFailed(error.message);
