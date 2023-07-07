@@ -9631,6 +9631,14 @@ module.exports = require("assert");
 
 /***/ }),
 
+/***/ 2081:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("child_process");
+
+/***/ }),
+
 /***/ 6113:
 /***/ ((module) => {
 
@@ -9794,6 +9802,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
+const { exec } = __nccwpck_require__(2081);
 
 const now = new Date();
 
@@ -9830,7 +9839,7 @@ try {
 
 
     let cmd = 'git branch --format=\'%(refname:short)\'';
-    let out = child_process.execSync(cmd);
+    let out = exec.execSync(cmd);
 
     // let out = child_process.execSync(cmd, (err, stdout, stderr) => {
     //     if (err) {

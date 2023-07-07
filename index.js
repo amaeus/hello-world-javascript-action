@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { exec } = require('child_process');
 
 const now = new Date();
 
@@ -36,7 +37,7 @@ try {
 
 
     let cmd = 'git branch --format=\'%(refname:short)\'';
-    let out = child_process.execSync(cmd);
+    let out = exec.execSync(cmd);
 
     // let out = child_process.execSync(cmd, (err, stdout, stderr) => {
     //     if (err) {
