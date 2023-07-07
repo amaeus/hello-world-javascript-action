@@ -36,14 +36,13 @@ try {
     // console.log(`CURRENT BRANCH:  ${} `);
 
 
-    let cmd = 'git branch';
+    let cmd = 'git branch --format=\'%(refname:short)\'';
     exec(cmd, (err, tag, stderr) => {
         if (err) {
             console.error(`Unable to find an earlier tag.\n${stderr}`);
-            return process.exit(1);
+            return;
         }
         console.log(`Outputting tag: ${tag.trim()}`)
-        return setOutput('tag', tag.trim());
     });
 
 } catch (error) {
