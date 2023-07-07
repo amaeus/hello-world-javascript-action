@@ -3,12 +3,9 @@ const github = require('@actions/github');
 
 try {
 
-    let defaultBranch = github.event.repository.default_branch;
+    let defaultBranch = github.context.payload.repository.default_branch;
 
     console.log("DEFAULT BRANCH: " + defaultBranch);
-
-
-
 
     // `who-to-greet` input defined in action metadata file
     const nameToGreet = core.getInput('who-to-greet');
