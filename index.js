@@ -1,6 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const {exec} = require('child_process');
 
 const now = new Date();
 
@@ -37,16 +36,18 @@ try {
 
 
     let cmd = 'git branch --format=\'%(refname:short)\'';
-    let out = exec(cmd, (err, stdout, stderr) => {
-        if (err) {
-            console.error(`Unable to find an earlier tag.\n${stderr}`);
-            return;
-        }
-        console.log(`Outputting tag: ${stdout.trim()}`)
-        return stdout.trim();
-    });
+    let out = child_process.execSync(cmd);
 
-    console.log(`OUT: '${JSON.stringify(out)}'`)
+    // let out = child_process.execSync(cmd, (err, stdout, stderr) => {
+    //     if (err) {
+    //         console.error(`Unable to find an earlier tag.\n${stderr}`);
+    //         return;
+    //     }
+    //     console.log(`Outputting tag: ${stdout.trim()}`)
+    //     return stdout.trim();
+    // });
+
+    console.log(`OUT: '${out}'`)
 
 } catch (error) {
     core.setFailed(error.message);
