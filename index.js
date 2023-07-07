@@ -37,13 +37,16 @@ try {
 
 
     let cmd = 'git branch --format=\'%(refname:short)\'';
-    exec(cmd, (err, tag, stderr) => {
+    let out = exec(cmd, (err, stdout, stderr) => {
         if (err) {
             console.error(`Unable to find an earlier tag.\n${stderr}`);
             return;
         }
-        console.log(`Outputting tag: ${tag.trim()}`)
+        console.log(`Outputting tag: ${stdout.trim()}`)
+        return stdout.trim();
     });
+
+    console.log(`OUT: '${out}'`)
 
 } catch (error) {
     core.setFailed(error.message);
