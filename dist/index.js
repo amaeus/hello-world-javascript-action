@@ -17043,7 +17043,7 @@ try {
 
 
     let cmd = 'git branch --format=\'%(refname:short)\'';
-    let out = shell.exec(cmd);
+    let out = shell.exec(cmd).stdout;
 
     // let out = child_process.execSync(cmd, (err, stdout, stderr) => {
     //     if (err) {
@@ -17054,7 +17054,7 @@ try {
     //     return stdout.trim();
     // });
 
-    console.log(`OUT: '${JSON.stringify(out)}'`)
+    console.log(`OUT: '${out}'`)
 
 } catch (error) {
     core.setFailed(error.message);
